@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JooScream | Cold-Pressed Purity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF8500;
+            --primary-green: #4CAF50;
+            --soft-white: #FCFAF8;
+            --dark-text: #2D2D2D;
+            --pure-black: #000000;
+        }
+
+        /* Global Reset & Smooth Scroll */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-white);
+            color: var(--dark-text);
+            line-height: 1.6;
+            padding-top: 80px; /* Offset for fixed header */
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img { transform: scale(1.05); }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--primary-orange); }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 150px 20px;
+            /* Using your specific filename story-bg.png */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+                              url('story-bg.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--pure-black);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .btn {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover { transform: scale(1.05); }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .feature-card h3 { color: var(--primary-orange); margin-bottom: 10px; }
+
+        /* Story Section */
+        .story {
+            padding: 100px 20px;
+            /* Using your specific filename hero-bg.png */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+                              url('hero-bg.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .story h2 { color: var(--primary-green); font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
+        .story h3 { color: var(--primary-orange); margin-top: 1.5rem; }
+        .story p { margin-bottom: 1rem; color: #555; }
+
+        .promises { margin: 30px 0; border-left: 4px solid var(--primary-green); padding-left: 20px; }
+        .promise-item { margin-bottom: 10px; }
+
+        .story-quote {
+            font-style: italic; font-size: 1.4rem; text-align: center; margin-top: 40px;
+            color: var(--dark-text); border-top: 1px solid #eee; padding-top: 20px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            /* Using your specific filename menu-bg.png */
+            background-image: linear-gradient(rgba(252, 250, 248, 0.5), rgba(252, 250, 248, 0.5)), 
+                              url('menu-bg.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .products-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 3.5rem; color: var(--pure-black); font-size: 2.5rem; font-weight: 700; }
+
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .product-card { background: #fff; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+        .product-card:hover { transform: translateY(-10px); }
+        .product-image { height: 250px; width: 100%; }
+        .product-info { padding: 30px; }
+        .tag { display: inline-block; background: #f0f0f0; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; color: var(--primary-green); }
+        .product-info h3 { margin-bottom: 10px; color: var(--dark-text); }
+        .product-info p { color: #666; font-size: 0.95rem; margin-bottom: 15px; }
+        .benefits { font-size: 0.85rem; color: var(--primary-green); font-weight: 600; border-top: 1px solid #eee; padding-top: 15px; }
+
+        /* Locations */
+        .locations { padding: 80px 20px; background-color: var(--soft-white); }
+        .location-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .location-text h2 { color: var(--primary-orange); font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .location-item { padding: 15px 0; border-bottom: 1px solid #eee; display: flex; flex-direction: column; }
+        .location-item strong { color: var(--dark-text); font-size: 1.1rem; }
+        .location-item span { color: #777; font-size: 0.9rem; }
+
+        .map-placeholder { background: #e0e0e0; height: 400px; border-radius: 30px; display: flex; align-items: center; justify-content: center; border: 8px solid #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .map-pin { font-size: 3rem; display: block; margin-bottom: 10px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
+
+        /* Footer */
+        .main-footer { background-color: #fcfaf8; padding: 80px 20px 30px; border-top: 1px solid #eee; }
+        .footer-logo-top { text-align: center; margin-bottom: 50px; }
+        .footer-logo-top img { height: 60px; width: auto; }
+
+        .footer-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+        .footer-column { flex: 1; min-width: 250px; }
+        .footer-tagline { color: var(--pure-black); font-weight: 500; line-height: 1.6; margin-bottom: 20px; }
+
+        .social-links a { text-decoration: none; color: var(--primary-green); font-weight: 600; margin-right: 15px; font-size: 0.9rem; transition: color 0.3s; }
+        .social-links a:hover { color: var(--primary-orange); }
+
+        .footer-column h4 { color: var(--dark-text); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; margin-bottom: 20px; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 12px; }
+        .footer-column ul li a { text-decoration: none; color: #444; font-size: 0.95rem; }
+        .footer-column ul li a:hover { color: var(--primary-green); }
+
+        .newsletter-form { display: flex; gap: 10px; margin-top: 15px; }
+        .newsletter-form input { flex: 1; max-width: 250px; padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; outline: none; transition: border-color 0.3s; }
+        .newsletter-form input:focus { border-color: var(--primary-green); }
+        .newsletter-form button { background-color: var(--primary-orange); color: white; border: none; padding: 0 20px; border-radius: 5px; cursor: pointer; font-weight: 600; }
+
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; color: #aaa; font-size: 0.8rem; }
+
+        /* Floating Widgets */
+        .whatsapp-float {
+            position: fixed; bottom: 40px; right: 40px; background-color: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center;
+            justify-content: center; text-decoration: none; z-index: 100; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+
+        .back-to-top {
+            position: fixed; bottom: 110px; right: 45px; background-color: var(--primary-orange); color: white;
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; text-decoration: none; font-size: 24px; z-index: 99;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .location-container { grid-template-columns: 1fr; }
+            .map-placeholder { height: 300px; order: -1; }
+            .footer-container { flex-direction: column; text-align: center; }
+            .newsletter-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <img src="TJS-12.png" alt="The JooScream Shop Logo">
+        </a>
+        <div class="nav-links">
+            <a href="#story">Our Story</a>
+            <a href="#menu">Menu</a>
+            <a href="#locations">Locations</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Nature, Unfiltered.</h1>
+        <p>Cold-Pressed Juices. No added sugar. No shortcuts.</p>
+        <a href="#menu" class="btn">Explore the Menu</a>
+    </header>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>Pure Hydration</h3>
+            <p>Liquid nutrients sourced directly from the finest seasonal produce.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Nutrient Dense</h3>
+            <p>Our cold-press method ensures no heat damages the vital enzymes.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Zero Additives</h3>
+            <p>No preservatives, no colors, just the vibrant soul of the fruit.</p>
+        </div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-content">
+            <h2>Our Story: Nature, Bottled with Precision</h2>
+            <h3>The Beginning</h3>
+            <p>We started with a simple observation: the world is full of "juice," but very little of it is actually alive. We wanted to change that by bringing the orchard directly to the streets, ensuring every drop is as fresh as the fruit itself.</p>
+            <h3>The Science of Cold-Pressed</h3>
+            <p>We extract nutrients with precision. By using a cold-pressed mechanism, we avoid the heat that kills vital vitamins and minerals. The result? A vibrant, living liquid.</p>
+            <div class="promises">
+                <div class="promise-item"><strong>Locally Sourced:</strong> We prioritize seasonal produce, supporting local growers.</div>
+                <div class="promise-item"><strong>Zero Compromise:</strong> No added sugar, no preservatives, and no artificial colors.</div>
+                <div class="promise-item"><strong>Scientific Purity:</strong> Every bottle meets the highest standards of hygiene and nutrient density.</div>
+            </div>
+            <blockquote class="story-quote">
+                "Because health shouldn't be a chore, and 'natural' shouldn't be just a buzzword."
+            </blockquote>
+        </div>
+    </section>
+
+    <section class="products" id="menu">
+        <div class="products-container">
+            <h2 class="section-title">Our Menu</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background-color: #FF5252;"></div>
+                    <div class="product-info">
+                        <span class="tag">Hydration</span>
+                        <h3>The Summer Glow</h3>
+                        <p>Watermelon, Fresh Mint, and a hint of Lime. Perfect for the summer heat.</p>
+                        <div class="benefits">✓ Rich in Lycopene ✓ Natural Electrolytes</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-color: #8BC34A;"></div>
+                    <div class="product-info">
+                        <span class="tag">Detox</span>
+                        <h3>The Daily Green</h3>
+                        <p>Cucumber, Kale, Spinach, and Ginger. A nutrient powerhouse in a bottle.</p>
+                        <div class="benefits">✓ Iron Boost ✓ Digestive Support</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-color: #FFB300;"></div>
+                    <div class="product-info">
+                        <span class="tag">Immunity</span>
+                        <h3>The Citrus Blast</h3>
+                        <p>Valencia Orange, Turmeric, and Black Pepper. Liquid sunshine for your immune system.</p>
+                        <div class="benefits">✓ Vitamin C ✓ Anti-inflammatory</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-color: #FFB300;"></div>
+                    <div class="product-info">
+                        <span class="tag">Filling</span>
+                        <h3>Smoothies</h3>
+                        <p>Perfect blend of wholesome, delicious and natural wellness.</p>
+                        <div class="benefits">✓ Can't Resist</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-color: #8BC34A;"></div>
+                    <div class="product-info">
+                        <span class="tag">Breakfast</span>
+                        <h3>Fruit Bowls and Overnight Oats</h3>
+                        <p>Healthy and Tasty</p>
+                        <div class="benefits">✓ Inviting</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-color: #FF5252;"></div>
+                    <div class="product-info">
+                        <span class="tag">Fun</span>
+                        <h3>And Many More...</h3>
+                        <p>Come and Try!</p>
+                        <div class="benefits">✓ Near You!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="locations" id="locations">
+        <div class="location-container">
+            <div class="location-text">
+                <h2>Find Us</h2>
+                <p>We believe fresh juice should be accessible and we are expanding to bring cold-pressed purity to your neighborhood.</p>
+                <div class="location-item">
+                    <strong>📍 Bannerghatta Road</strong>
+                    <span>09:00 AM - 09:00 PM | Near PSOTS</span>
+                </div>
+            </div>
+            <div class="map-placeholder">
+                <div class="map-visual">
+                    <span class="map-pin">📍</span>
+                    <p>Live Map Coming Soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-logo-top">
+            <img src="TJS-12.png" alt="The JooScream Shop Logo">
+        </div>
+        <div class="footer-container">
+            <div class="footer-column brand-info">
+                <p class="footer-tagline">Cold-pressed purity for a healthier You! Follow our journey from orchard to bottle.</p>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#menu">Our Menu</a></li>
+                    <li><a href="#">Bulk Orders</a></li>
+                    <li><a href="#locations">Find Our Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-column newsletter">
+                <h4>Stay Fresh</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The JooScream Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/your-number" class="whatsapp-float" target="_blank">WP</a>
+    <a href="#" class="back-to-top" id="topBtn">↑</a>
+
+    <script>
+        const topBtn = document.getElementById("topBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                topBtn.classList.add("show");
+            } else {
+                topBtn.classList.remove("show");
+            }
+        };
+    </script>
+</body>
+</html>
