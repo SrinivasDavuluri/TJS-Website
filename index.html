@@ -171,7 +171,6 @@
 
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        /* Premium Card Refinements */
         .product-card { 
             background: #fff; 
             border-radius: 25px; 
@@ -236,7 +235,6 @@
             font-weight: bold;
         }
 
-        /* Smooth Floating Fade Adjustments */
         .back-to-top {
             position: fixed; bottom: 110px; right: 45px; background-color: var(--primary-orange); color: white;
             width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center;
@@ -253,14 +251,18 @@
             
             /* Responsive Navigation Formatting */
             nav {
-                padding: 0.8rem 1.5rem;
+                padding: 0.8rem 1.2rem; /* Tighter padding for mobile screens */
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
             }
+            
+            /* Balanced Logo Height Upgrade */
             .logo img {
-                height: 35px;
+                height: 42px;
             }
+            
+            /* Balanced Link Container Configuration */
             .nav-links {
                 display: flex;
                 flex-wrap: wrap;
@@ -269,9 +271,12 @@
                 max-width: 65%;
                 text-align: right;
             }
+            
+            /* Adjusted Text Hierarchy Settings */
             .nav-links a {
                 margin-left: 0;
-                font-size: 0.85rem;
+                font-size: 0.8rem; /* Slightly smaller for a tighter, high-end mobile fit */
+                letter-spacing: -0.2px; /* Pulls text together slightly for cleaner rendering */
             }
 
             .location-container { grid-template-columns: 1fr; }
