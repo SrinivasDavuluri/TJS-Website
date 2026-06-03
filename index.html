@@ -66,7 +66,6 @@
         .hero {
             text-align: center;
             padding: 150px 20px;
-            /* Using your specific filename story-bg.png */
             background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
                               url('story-bg.png'); 
             background-size: cover;
@@ -129,7 +128,6 @@
         /* Story Section */
         .story {
             padding: 100px 20px;
-            /* Using your specific filename hero-bg.png */
             background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
                               url('hero-bg.png'); 
             background-size: cover;
@@ -161,7 +159,6 @@
         /* Products Section */
         .products {
             padding: 100px 0;
-            /* Using your specific filename menu-bg.png */
             background-image: linear-gradient(rgba(252, 250, 248, 0.5), rgba(252, 250, 248, 0.5)), 
                               url('menu-bg.png'); 
             background-size: cover;
@@ -173,8 +170,20 @@
         .section-title { text-align: center; margin-bottom: 3.5rem; color: var(--pure-black); font-size: 2.5rem; font-weight: 700; }
 
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .product-card { background: #fff; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
-        .product-card:hover { transform: translateY(-10px); }
+        
+        /* Premium Card Refinements */
+        .product-card { 
+            background: #fff; 
+            border-radius: 25px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .product-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12); 
+        }
+        
         .product-image { height: 250px; width: 100%; }
         .product-info { padding: 30px; }
         .tag { display: inline-block; background: #f0f0f0; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 10px; color: var(--primary-green); }
@@ -227,16 +236,44 @@
             font-weight: bold;
         }
 
+        /* Smooth Floating Fade Adjustments */
         .back-to-top {
             position: fixed; bottom: 110px; right: 45px; background-color: var(--primary-orange); color: white;
             width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center;
             justify-content: center; text-decoration: none; font-size: 24px; z-index: 99;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; 
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
         }
         .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-5px); }
 
+        /* Mobile Optimization Queries */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
+            
+            /* Responsive Navigation Formatting */
+            nav {
+                padding: 0.8rem 1.5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo img {
+                height: 35px;
+            }
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 6px 14px;
+                max-width: 65%;
+                text-align: right;
+            }
+            .nav-links a {
+                margin-left: 0;
+                font-size: 0.85rem;
+            }
+
             .location-container { grid-template-columns: 1fr; }
             .map-placeholder { height: 300px; order: -1; }
             .footer-container { flex-direction: column; text-align: center; }
@@ -281,7 +318,7 @@
 
     <section class="story" id="story">
         <div class="story-content">
-            <h2>Our Story: Nature, Juiced with Precision</h2>
+            <h2>Our Story: Nature, Unfiltered</h2>
             <h3>The Beginning</h3>
             <p>The JooScream Shop started with a simple observation: the world is full of "juice," but very little of it is actually alive. We wanted to improve that by bringing the orchard directly to the streets, ensuring every drop is as fresh as the fruit itself.</p>
             <h3>The Science of Cold-Pressed</h3>
@@ -408,12 +445,6 @@
                 <ul>
                     <li id="contact">Contact Us: info@jooscream.com</li>
                 </ul>
-                <!--
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email" required>
-                    <button type="submit">Join</button>
-                </form>
-                -->
             </div>
         </div>
         <div class="footer-bottom">
